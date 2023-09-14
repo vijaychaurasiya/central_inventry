@@ -1,0 +1,15 @@
+com\example\demo\DemoApplication.class
+com\example\demo\dto\ProductDTO$Links.class
+com\example\demo\dto\SupplierDTO.class
+com\example\demo\service\ProductService.class
+com\example\demo\dto\ProductDTO$Links$Collection.class
+com\example\demo\service\SupplierService.class
+com\example\demo\dto\ProductDTO.class
+com\example\demo\repository\SupplierRepository.class
+com\example\demo\dto\ProductDTO$Category.class
+com\example\demo\entity\Supplier.class
+com\example\demo\controller\ProductController.class
+com\example\demo\dto\ProductDTO$Links$Self.class
+com\example\demo\controller\SupplierController.class
+com\example\demo\repository\ProductRepository.class
+com\example\demo\entity\Product.class
