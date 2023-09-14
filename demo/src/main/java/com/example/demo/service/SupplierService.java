@@ -83,8 +83,8 @@ public class SupplierService {
 
 
 	public ResponseEntity<String> logout(Supplier supplier) {
-		
-		 supplier.setToken(null);
+		supplier.setEmail(supplierDTO.getEmail());
+		 supplier.setToken("0");
 	        repository.save(supplier);
 	       // Supplier repoSupplier= repository.findByUserName(supplier.getEmail(), supplier.getPassword());
 	    	supplierDTO.setFirstName(null);
