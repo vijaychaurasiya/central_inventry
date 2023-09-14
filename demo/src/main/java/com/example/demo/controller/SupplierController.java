@@ -20,6 +20,9 @@ public class SupplierController {
 	Supplier supplier;
 
 	@Autowired
+	SupplierDTO supplierDTO;
+	
+	@Autowired
 	SupplierService supplierService;
    
 	@PostMapping("/register")
@@ -42,8 +45,9 @@ public class SupplierController {
 	}
 	
 	@PostMapping("/logout")
-	public ResponseEntity<String> loginSupplier(){
-		return supplierService.logout();
+	public ResponseEntity<String> logoutSupplier(){
+		supplier.setEmail(supplierDTO.getEmail());
+		return supplierService.logout(supplier);
 		 
 	}
 }

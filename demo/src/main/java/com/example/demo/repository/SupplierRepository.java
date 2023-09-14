@@ -1,6 +1,10 @@
 package com.example.demo.repository;
 
 
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -13,6 +17,15 @@ public interface SupplierRepository extends CrudRepository<Supplier, Integer> {
   
 	@Query("select s from Supplier s where s.email= :email and s.password= :password")
 	public Supplier findByUserName(@Param("email") String email, @Param("password") String password);
+
+	@Query("select s from Supplier s where s.id= :id")
+	public Supplier existById(@Param("id") int id);
+
+	
+	
+//	@Modifying
+//	@Query("INSERT INTO Supplier (token) " + "VALUES (:token)")
+//	public void update(@Param("token") String token);
 
 //	@Modifying
 //	@Query("INSERT INTO Supplier (firstName, lastName, baseUrl, consumerKey, consumerSecret, phone, email, password) " +

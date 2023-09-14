@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SupplierDTO {
+	    private Integer id;
 	    private String firstName;
 		private String lastName;
 		private String baseUrl;
@@ -12,14 +13,16 @@ public class SupplierDTO {
 		private Integer phone;
 	    private String email;
 	    private String password;
+	    private String token;
 	    
 	    public SupplierDTO() {
 	    	
 	    }
 	 
-		public SupplierDTO(String firstName, String lastName, String baseUrl, String consumerKey, String consumerSecret,
-				Integer phone, String email, String password) {
+		public SupplierDTO(int id,String firstName, String lastName, String baseUrl, String consumerKey, String consumerSecret,
+				Integer phone, String email, String password, String token) {
 			super();
+			this.id=id;
 			this.firstName = firstName;
 			this.lastName = lastName;
 			this.baseUrl = baseUrl;
@@ -28,6 +31,7 @@ public class SupplierDTO {
 			this.phone = phone;
 			this.email = email;
 			this.password = password;
+			this.token=token;
 		}
 		public String getEmail() {
 			return email;
@@ -79,11 +83,31 @@ public class SupplierDTO {
 			this.phone = phone;
 		}
 
+		public String getToken() {
+			return token;
+		}
+
+		public void setToken(String token) {
+			this.token = token;
+		}
+
+		public Integer getId() {
+			return id;
+		}
+
+		public void setId(Integer id) {
+			this.id = id;
+		}
+
 		@Override
 		public String toString() {
-			return "Supplier [firstName=" + firstName + ", lastName=" + lastName + ", baseUrl=" + baseUrl
-					+ ", consumerKey=" + consumerKey + ", consumerSecret=" + consumerSecret + ", phone=" + phone
-					+ ", email=" + email + ", password=" + password + "]";
+			return "SupplierDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", baseUrl="
+					+ baseUrl + ", consumerKey=" + consumerKey + ", consumerSecret=" + consumerSecret + ", phone="
+					+ phone + ", email=" + email + ", password=" + password + ", token=" + token + "]";
 		}
+
+		
+
+		
      
 }
