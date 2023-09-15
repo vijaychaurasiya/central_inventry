@@ -1,0 +1,11 @@
+*********************AWS***********************
+
+
+//AWS Login (open cmd where .pem file is present)
+ssh -i MiniBayBackend.pem ubuntu@43.204.41.142
+
+//Upload file
+scp -i "C:\Users\Vijay Chaurasiya\Downloads\MiniBayBackend.pem" "C:\Users\Vijay Chaurasiya\Downloads\central_inventry-main\central_inventry-main\demo\target\demo-0.0.1-SNAPSHOT.jar" ubuntu@43.204.41.142.compute-1.amazonaws.com
+
+//MySQL Login
+mysql -u root -p root

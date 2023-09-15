@@ -24,6 +24,7 @@ import com.example.demo.dto.ProductDTO;
 import com.example.demo.dto.SupplierDTO;
 import com.example.demo.entity.Supplier;
 import com.example.demo.repository.SupplierRepository;
+import com.example.demo.service.AuthenticationService;
 import com.example.demo.service.ProductService;
 
 @RestController
@@ -33,7 +34,7 @@ public class ProductController {
 	SupplierDTO supplierDTO;
 	
     @Autowired
-    ProductService productService;
+    AuthenticationService authenticationService;
 	
     @Autowired
 	SupplierRepository supplierRepository;
@@ -42,12 +43,12 @@ public class ProductController {
 	@GetMapping("/products")
 	public ResponseEntity<List<Object>> getProducts(@RequestHeader("Authorization") String authorization ) throws Exception{
 		
-		boolean token=productService.authenticate(authorization,supplierDTO.getId());
+		boolean token=authenticationService.authenticate(authorization,supplierDTO.getId());
 		if(!token) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);    
 		}
 		String url=supplierDTO.getBaseUrl()+"products/?consumer_key="+supplierDTO.getConsumerKey()+"&consumer_secret="+supplierDTO.getConsumerSecret();
-		System.out.println(url);
+		//System.out.println(url);
 		RestTemplate restTemplate=new RestTemplate();
 		Object[] productList= restTemplate.getForObject(url, Object[].class);
 		return new ResponseEntity<>(Arrays.asList(productList),HttpStatus.OK);
@@ -58,7 +59,7 @@ public class ProductController {
 	@GetMapping("/products/{id}")
 	public ResponseEntity<ProductDTO> getSpecificProducts(@PathVariable("id") int id){
 		String strId= String.valueOf(id);
-		boolean token=productService.authenticate(supplierDTO.getToken(),supplierDTO.getId());
+		boolean token=authenticationService.authenticate(supplierDTO.getToken(),supplierDTO.getId());
 		if(!token) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);    
 		}
@@ -71,13 +72,13 @@ public class ProductController {
 	
 	@PutMapping("/products/{id}")
 	public ResponseEntity<ProductDTO> updateProducts(@PathVariable("id") int id, @RequestBody ProductDTO productDTO){
-		boolean token=productService.authenticate(supplierDTO.getToken(),supplierDTO.getId());
+		boolean token=authenticationService.authenticate(supplierDTO.getToken(),supplierDTO.getId());
 		if(!token) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		String strId= String.valueOf(id); 
 		String url=supplierDTO.getBaseUrl()+"products/"+strId+"/?consumer_key="+supplierDTO.getConsumerKey()+"&consumer_secret="+supplierDTO.getConsumerSecret();   
-		System.out.println(url);
+		//System.out.println(url);
 		RestTemplate restTemplate=new RestTemplate();
 		ProductDTO product= restTemplate.postForObject(url,productDTO, ProductDTO.class);
 		return new ResponseEntity<>(product,HttpStatus.OK);

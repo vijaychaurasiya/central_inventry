@@ -1,0 +1,84 @@
+**************SQL*********************
+
+CREATE DATABASE central_invertry;
+
+
+*************Supplier********************
+CREATE TABLE supplier (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    base_url VARCHAR(255),
+    consumer_key VARCHAR(255),
+    consumer_secret VARCHAR(255),
+    phone INT,
+    email VARCHAR(255),
+    password VARCHAR(255)
+);
+
+INSERT INTO supplier (first_name, last_name, base_url, consumer_key, consumer_secret, phone, email, password)
+VALUES ('Seller', 'one', 'https://lafemmestore.in/wp-json/wc/v3/', 'ck_c11825bccd95fdc7546b314be6fded4a01f201f8', 'cs_3082c4f850bbd3a522be6b119a01c070909417d7', 1234567890, 'sellerone@example.com', 'root');
+
+
+*********************Products*********************
+CREATE TABLE products (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    sku varchar(16),
+    price DECIMAL(10, 3),
+    stock_quantity INT
+);
+
+
+*********************Orders************************
+CREATE TABLE orders (
+    id INT PRIMARY KEY,
+    parent_id INT,
+    number VARCHAR(255),
+    order_key VARCHAR(255),
+    created_via VARCHAR(255),
+    version VARCHAR(10),
+    status VARCHAR(20),
+    currency VARCHAR(10),
+    date_created DATETIME,
+    date_created_gmt DATETIME,
+    date_modified DATETIME,
+    date_modified_gmt DATETIME,
+    discount_total DECIMAL(10, 2),
+    discount_tax DECIMAL(10, 2),
+    shipping_total DECIMAL(10, 2),
+    shipping_tax DECIMAL(10, 2),
+    cart_tax DECIMAL(10, 2),
+    total DECIMAL(10, 2),
+    total_tax DECIMAL(10, 2),
+    prices_include_tax BOOLEAN,
+    customer_id INT,
+    customer_ip_address VARCHAR(45),
+    customer_user_agent VARCHAR(255),
+    customer_note TEXT,
+    payment_method VARCHAR(255),
+    payment_method_title VARCHAR(255),
+    transaction_id VARCHAR(255),
+    date_paid DATETIME,
+    date_paid_gmt DATETIME,
+    date_completed DATETIME,
+    date_completed_gmt DATETIME,
+    cart_hash VARCHAR(255)
+);
+
+CREATE TABLE billing (
+    order_id INT NOT NULL,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    company VARCHAR(255),
+    address_1 VARCHAR(255),
+    address_2 VARCHAR(255),
+    city VARCHAR(255),
+    state VARCHAR(255),
+    postcode VARCHAR(255),
+    country VARCHAR(255),
+    email VARCHAR(255),
+    phone VARCHAR(255),
+    PRIMARY KEY (order_id)
+);
+
