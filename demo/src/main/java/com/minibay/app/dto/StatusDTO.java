@@ -2,11 +2,22 @@ package com.minibay.app.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class StatusDTO {
+	@JsonProperty("Status")
     private String status;
+	
+	@JsonProperty("StatusDateTime")
     private Date statusDateTime;
+	
+	@JsonProperty("StatusType")
     private String statusType;
+	
+	@JsonProperty("StatusLocation")
     private String statusLocation;
+	
+	@JsonProperty("Instructions")
     private String instructions;
 
     public StatusDTO() {

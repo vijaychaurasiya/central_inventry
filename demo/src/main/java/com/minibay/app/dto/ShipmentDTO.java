@@ -3,12 +3,26 @@ package com.minibay.app.dto;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ShipmentDTO {
+	
+	@JsonProperty("Status")
     private StatusDTO status;
+	
+	@JsonProperty("PickUpDate")
     private Date pickUpDate;
+	
+	@JsonProperty("NSLCode")
     private String nslCode;
+	
+	@JsonProperty("Sortcode")
     private String sortCode;
+	
+	@JsonProperty("ReferenceNo")
     private String referenceNo;
+	
+	@JsonProperty("AWB")
     private String awb;
     
     public ShipmentDTO() {
