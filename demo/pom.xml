@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.minibay</groupId>
 	<artifactId>application</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<name>minibay</name>
 	<description>Backend for minibay</description>
 	<properties>
